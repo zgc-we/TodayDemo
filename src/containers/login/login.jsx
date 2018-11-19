@@ -35,8 +35,8 @@ class Login extends Component {
         const {actions, form} = this.props; // 引用redux
 	    form.validateFieldsAndScroll((err, values) => {
 		    if (!err) {
-                let username = values.username, // 用户名
-                    password = values.password, // 密码
+                let username = values.username === 'ludan' ? 'sosout': '', // 用户名
+                    password = values.password === '123456' ? 'sosout' : '', // 密码
                     loginParams = { // 登录参数
                         username: username,
                         password: password	
