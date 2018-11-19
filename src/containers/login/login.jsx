@@ -77,7 +77,7 @@ class Login extends Component {
 				    </div>
 					<Form onSubmit={this.handleSubmit}>
 				        <FormItem hasFeedback>
-                            {getFieldDecorator('username', { initialValue: 'sosout', rules: [{ required: true, message: Config.message.usernameInput }, { validator: this.checkUsername }] })(
+                            {getFieldDecorator('username', { initialValue: 'ludan', rules: [{ required: true, message: Config.message.usernameInput }, { validator: this.checkUsername }] })(
                                 <Input size="large" placeholder="用户名" maxLength="6" />
                             )}
 				        </FormItem>
@@ -90,8 +90,8 @@ class Login extends Component {
 				            <Button type="primary" htmlType="submit" size="large" loading={loginInfo.length > 0 ? true : false}>{loginInfo.length > 0 ? '登录中...' : '登录'}</Button>
 				        </FormItem>
 				        <div className="login-account">
-                            <span>账号：sosout</span>
-                            <span>密码：sosout</span>
+                            <span>账号：ludan</span>
+                            <span>密码：123456</span>
 				        </div>
 			        </Form>
 		        </Spin>
