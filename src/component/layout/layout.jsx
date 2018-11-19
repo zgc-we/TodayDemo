@@ -31,47 +31,47 @@ class Main extends Component {
 		const collapsed = Config.localItem('COLLAPSED') == 'YES' ? true : false;
 		this.state = {
 			collapsed: collapsed,
-    		mode: collapsed ? 'vertical' : 'inline', 
+			mode: collapsed ? 'vertical' : 'inline',
 		};
 	}
 	onCollapse = (collapsed) => {
-		if(collapsed) Config.localItem('COLLAPSED', 'YES'); else Config.localItem('COLLAPSED', 'NO');
-	    this.setState({
-	      collapsed,
-	      mode: collapsed ? 'vertical' : 'inline'
-	    });
+		if (collapsed) Config.localItem('COLLAPSED', 'YES'); else Config.localItem('COLLAPSED', 'NO');
+		this.setState({
+			collapsed,
+			mode: collapsed ? 'vertical' : 'inline'
+		});
 	}
 	toggle = (collapsed) => {
-		if(collapsed) Config.localItem('COLLAPSED', 'YES'); else Config.localItem('COLLAPSED', 'NO');
-	    this.setState({
-	      collapsed: collapsed,
-	      mode: collapsed ? 'vertical' : 'inline'
-	    });
-  	}
-  	shouldComponentUpdate(nextProps, nextState) {
-        return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state),fromJS(nextState))
-    }
+		if (collapsed) Config.localItem('COLLAPSED', 'YES'); else Config.localItem('COLLAPSED', 'NO');
+		this.setState({
+			collapsed: collapsed,
+			mode: collapsed ? 'vertical' : 'inline'
+		});
+	}
+	shouldComponentUpdate(nextProps, nextState) {
+		return !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state), fromJS(nextState))
+	}
 	render() {
 		// 这个组件是一个包裹组件，所有的路由跳转的页面都会以this.props.children的形式加载到本组件下
 		return (
-		<Layout className="layout">
-	        <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
-		        <div className="layout-logo">
-		        	<Link to="/home">
-			        	<img className="logo-img" src={Config.logoSrc} />
-			        	<span className="logo-text">{Config.logoText}</span>
-		        	</Link>
-		        </div>
-	        	<Lmenu mode={ this.state.mode } />
-	        </Sider>
-	        <Layout>
-	          <Lheader collapsed={this.state.collapsed} toggle={ collapsed => this.toggle(collapsed) } />
-	          <Content className="layout-content">
-	           	{this.props.children}
-	          </Content>
-	          <Lfooter />
-	        </Layout>
-	    </Layout>
+			<Layout className="layout">
+				<Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
+					<div className="layout-logo">
+						<Link to="/home">
+							<img className="logo-img" src={Config.logoSrc} />
+							<span className="logo-text">{Config.logoText}</span>
+						</Link>
+					</div>
+					<Lmenu mode={this.state.mode} />
+				</Sider>
+				<Layout>
+					<Lheader collapsed={this.state.collapsed} toggle={collapsed => this.toggle(collapsed)} />
+					<Content className="layout-content">
+						{this.props.children}
+					</Content>
+					<Lfooter />
+				</Layout>
+			</Layout>
 		);
 	}
 }
