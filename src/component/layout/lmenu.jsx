@@ -19,6 +19,7 @@ export class Lmenu extends Component {
 			openKeys: openKeys
 		};
 	}
+
 	onOpenChange = (openKeys) => {
 		const state = this.state;
 		const latestOpenKey = openKeys.find(key => !(state.openKeys.indexOf(key) > -1));
@@ -34,12 +35,14 @@ export class Lmenu extends Component {
 		Config.localItem('OPENKEY', nextOpenKeys);
 		this.setState({ openKeys: nextOpenKeys });
 	}
+
 	getAncestorKeys = (key) => {
 		const map = {
 			sub3: ['sub2'],
 		};
 		return map[key] || [];
 	}
+	
 	render() {
 		const defaultSelectedKey = process.env.NODE_ENV !== 'production' ? [location.pathname.split('/')[location.pathname.split('/').length - 1] || 'home'] : [location.hash.split('/')[location.hash.split('/').length - 1].split('?')[0] || 'home'];
 		return (
