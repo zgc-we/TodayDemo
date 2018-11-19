@@ -35,7 +35,7 @@ class Login extends Component {
         const {actions, form} = this.props; // 引用redux
 	    form.validateFieldsAndScroll((err, values) => {
 		    if (!err) {
-                let username = values.username === 'ludan' ? 'sosout': '', // 用户名
+                let username = values.username === 'admin' ? 'sosout': '', // 用户名
                     password = values.password === '123456' ? 'sosout' : '', // 密码
                     loginParams = { // 登录参数
                         username: username,
@@ -77,7 +77,7 @@ class Login extends Component {
 				    </div>
 					<Form onSubmit={this.handleSubmit}>
 				        <FormItem hasFeedback>
-                            {getFieldDecorator('username', { initialValue: 'ludan', rules: [{ required: true, message: Config.message.usernameInput }, { validator: this.checkUsername }] })(
+                            {getFieldDecorator('username', { initialValue: 'admin', rules: [{ required: true, message: Config.message.usernameInput }, { validator: this.checkUsername }] })(
                                 <Input size="large" placeholder="用户名" maxLength="6" />
                             )}
 				        </FormItem>
@@ -90,7 +90,7 @@ class Login extends Component {
 				            <Button type="primary" htmlType="submit" size="large" loading={loginInfo.length > 0 ? true : false}>{loginInfo.length > 0 ? '登录中...' : '登录'}</Button>
 				        </FormItem>
 				        <div className="login-account">
-                            <span>账号：ludan</span>
+                            <span>账号：admin</span>
                             <span>密码：123456</span>
 				        </div>
 			        </Form>
